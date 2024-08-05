@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Role Selector</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 20px;
+      height: 100%;
+      width: 100%;
+    }
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
+    .button-container button {
+      width: 100px; /* 버튼 크기 조정 */
+      height: 100px; /* 버튼 크기 조정 */
+      background-color: #f0f0f0;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      overflow: hidden;
+      position: relative;
+    }
+    .button-container button img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .button-description {
+      margin-top: 10px; /* 이미지 설명과의 간격 설정 */
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="button-container" onclick="submitRole('60대노인')"> <!-- 60대 노인 -->
+      <button>
+        <img src="../image/60s_image.jpg" alt="60s">
+      </button>
+      <span class="button-description">60대 노인</span>
+    </div>
+    <div class="button-container" onclick="submitRole('40대아주머니')"> <!-- 40대 아주머니 -->
+      <button>
+        <img src="../image/40s_image.jpg" alt="40s">
+      </button>
+      <span class="button-description">40대 아주머니</span>
+    </div>
+    <div class="button-container" onclick="submitRole('30대성인남성')"> <!-- 30대 성인 남성 -->
+      <button>
+        <img src="../image/30s_image.jpg" alt="30s">
+      </button>
+      <span class="button-description">30대 성인 남성</span>
+    </div>
+    <div class="button-container" onclick="submitRole('20대대학생')"> <!-- 20대 대학생 -->
+      <button>
+        <img src="../image/20s_image.jpg" alt="20s">
+      </button>
+      <span class="button-description">20대 대학생</span>
+    </div>
+    <div class="button-container" onclick="submitRole('10대고등학생소년')"> <!-- 10대 고등학생 -->
+      <button>
+        <img src="../image/10s_image.jpg" alt="10s_high">
+      </button>
+      <span class="button-description">10대 고등학생</span>
+    </div>
+    <div class="button-container" onclick="submitRole('8살여자아이')"> <!-- 8살 여자애 -->
+      <button>
+        <img src="../image/8s_image.jpg" alt="10s_middle">
+      </button>
+      <span class="button-description">8살 여자아이</span>
+    </div>
+  </div>
+
+  <script>
+    //url로 보내기
+    async function redirectToNodeJS(role) {
+        try {
+            const response = await fetch('/fliplearning', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ role }),
+            });
+            const data = await response.text();
+            console.log(data); // 서버로부터 받은 응답을 콘솔에 출력
+          } catch (error) {
+            console.error('Error:', error);
+          }
+      // node.js로 데이터(role)를 전달하고 처리할 코드를 작성
+
+      // 여기서는 간단히 console에 출력하는 예제를 작성
+      
+      // 실제로는 fetch 등을 사용하여 서버로 데이터를 전송할 수 있음
+    }
+
+    function submitRole(role) {
+        const keyword = localStorage.getItem('keyword');
+        
+        if (role) {
+          localStorage.setItem('role', role);
+          window.location.href = `/Users/pc/Desktop/learningplatform/view/frontend/fliplearning.html?keyword=${encodeURIComponent(
+            keyword)}&role=${encodeURIComponent(role)}`;
+        } else {
+          alert('Please enter a keyword');
+        }
+      }
+  </script>
+</body>
+</html>

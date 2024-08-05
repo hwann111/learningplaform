@@ -1,0 +1,78 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #002f6c; /* 진한 남색 배경 */
+}
+
+.service-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: calc(25% - 20px); /* 가로 정렬로 변경 */
+  padding: 10px; /* 내부 패딩 줄임 */
+  box-sizing: border-box;
+  transition: all 0.3s ease; /* 변화 애니메이션 추가 */
+}
+
+.box:hover {
+  transform: scale(0.95); /* 호버 시 조금 축소되도록 */
+}
+
+.box img {
+  max-width: 80%; /* 이미지 너비 조정 */
+  height: auto;
+  border-radius: 5px;
+}
+
+.image-button {
+  margin-top: 5px; /* 버튼 상단 여백 줄임 */
+  padding: 8px 12px; /* 버튼 패딩 줄임 */
+  font-size: 0.9em; /* 버튼 폰트 사이즈 줄임 */
+  border: none;
+  border-radius: 5px;
+  background-color: #0056b3;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.image-button:hover {
+  background-color: #003d99; /* Hover 시 색상 */
+}
+
+@media (max-width: 768px) {
+  .box {
+    width: calc(50% - 20px); /* 미디어 쿼리에서 너비 변경 */
+  }
+}
+
+.bar {
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  width: 100%; /* 부모 요소 너비에 맞춤 */
+  height: 10px; /* 높이 조정 */
+  background-color: #00ff2a; /* 기본 배경색 */
+  margin-top: 5px; /* 위 여백 추가 */
+}
+
+.bar > div {
+  height: 100%; /* 높이 100% */
+  transition: width 0.3s ease; /* 너비 변화 애니메이션 */
+}

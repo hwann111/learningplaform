@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습 자료 생성기</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fc;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 50px;
+        }
+        .button {
+            background-color: #1a73e8;
+            color: white;
+            padding: 15px 30px;
+            font-size: 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            background-color: #155ab8;
+            transform: translateY(-5px);
+        }
+        .button:active {
+            background-color: #0e3f8c;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>학습 자료 생성기</h1>
+        <button class="button" onclick="goToNextPage()">학습 유형 검사하기</button>
+    </div>
+    <script>
+        function goToNextPage() {
+            window.location.href = "test.html";
+        }
+    </script>
+</body>
+</html>

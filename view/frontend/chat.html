@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>토론하는 역사채팅</title>
+    <link rel="stylesheet" href="../css/chat.css" />
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="chat-header">
+        <h1>토론하는 역사채팅</h1>
+      </div>
+      <div class="messages" id="messages"></div>
+      <div class="input-container">
+        <input type="text" id="userInput" placeholder="질문을 입력하세요..." />
+        <button onclick="sendMessage()">전송</button>
+      </div>
+    </div>
+    <script src="chat.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const keyword = urlParams.get('keyword');
+        if (keyword) {
+          document.getElementById('userInput').value = keyword;
+          sendMessage();
+        }
+      });
+    </script>
+  </body>
+</html>
