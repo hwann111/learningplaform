@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Page</title>
+    <link rel="stylesheet" href="css/service.css" />
+  </head>
+  <body>
+    <div class="service-container">
+      <div class="box" id="movie">
+        <img src="./img/001.jpg" alt="Image 1" />
+        <button class="image-button" onclick="navigateToVideo()">
+          영상학습
+        </button>
+        <div class="bar" id="movieBar"></div>
+      </div>
+
+      <div class="box" id="chat">
+        <img src="./img/002.jpg" alt="Image 2" />
+        <button class="image-button" onclick="navigateToChat()">
+          챗봇과토론학습
+        </button>
+        <div class="bar" id="chatBar"></div>
+      </div>
+
+      <div class="box" id="write">
+        <img src="./img/003.jpg" alt="Image 3" />
+        <button class="image-button" onclick="navigateToMindmap()">
+          서술형문답학습
+        </button>
+        <div class="bar" id="writeBar"></div>
+      </div>
+
+      <div class="box" id="flip">
+        <img src="./img/004.jpeg" alt="Image 4" />
+        <button class="image-button" onclick="navigateToFlip()">플립러닝학습</button>
+        <div class="bar" id="flipBar"></div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // 로컬 스토리지에서 sortedResults 값을 가져오기
+        const storedResults = localStorage.getItem('sortedResults');
+        const sortedResults = storedResults ? JSON.parse(storedResults) : [];
+
+        // 가장 높은 점수와 두 번째로 높은 점수 구하기
+        const highestScore =
+          sortedResults.length > 0 ? sortedResults[0][0] : null;
+        const secondHighestScore =
+          sortedResults.length > 1 ? sortedResults[1][0] : null;
+
+        // 막대 색상 적용 함수 호출
+        colorBars(highestScore, secondHighestScore);
+      });
+
+      function colorBars(highestScore, secondHighestScore) {
+        const movieBar = document.getElementById('movieBar');
+        const chatBar = document.getElementById('chatBar');
+        const writeBar = document.getElementById('writeBar');
+        const flipBar = document.getElementById('flipBar');
+
+        // 초기화: 모든 막대를 기본색상으로 설정
+        movieBar.style.backgroundColor = 'black';
+        chatBar.style.backgroundColor = 'black';
+        writeBar.style.backgroundColor = 'black';
+        flipBar.style.backgroundColor = 'black';
+
+        // 가장 높은 점수에 따라 첫 번째 막대 색상 설정
+        switch (highestScore) {
+          case 'V':
+          case 'A':
+            movieBar.style.backgroundColor = 'green';
+            break;
+          case 'R':
+            writeBar.style.backgroundColor = 'green';
+            break;
+          case 'K':
+            chatBar.style.backgroundColor = 'green';
+            flipBar.style.backgroundColor = 'green';
+            break;
+          default:
+            break;
+        }
+
+        // 두 번째로 높은 점수에 따라 두 번째 막대 색상 설정
+        switch (secondHighestScore) {
+          case 'V':
+          case 'A':
+            movieBar.style.backgroundColor = 'orange';
+            break;
+          case 'R':
+            writeBar.style.backgroundColor = 'orange';
+            break;
+          case 'K':
+            chatBar.style.backgroundColor = 'orange';
+            flipBar.style.backgroundColor = 'orange';
+            break;
+          default:
+            break;
+        }
+      }
+
+       function navigateToVideo() {
+        const keyword = localStorage.getItem('keyword');
+        if (keyword) {
+          window.location.href = `/Users/pc/Desktop/learningplatform/view/frontend/videogenerate.html?keyword=${encodeURIComponent(
+            keyword
+          )}`;
+        } else {
+          alert('Keyword not found');
+        }
+      } 
+
+      function navigateToChat() {
+        const keyword = localStorage.getItem('keyword');
+        if (keyword) {
+          window.location.href = `/Users/pc/Desktop/learningplatform/view/frontend/chat.html?keyword=${encodeURIComponent(
+            keyword
+          )}`;
+        } else {
+          alert('Keyword not found');
+        }
+      }
+
+      function navigateToMindmap() {
+        const keyword = localStorage.getItem('keyword');
+        if (keyword) {
+          window.location.href = `/Users/pc/Desktop/learningplatform/view/frontend/mindmap.html?keyword=${encodeURIComponent(
+            keyword
+          )}`;
+        } else {
+          alert('Keyword not found');
+        }
+      }
+      function navigateToFlip() {
+        const keyword = localStorage.getItem('keyword');
+        if (keyword) {
+          window.location.href = `/Users/pc/Desktop/learningplatform/view/frontend/flipselect.html?keyword=${encodeURIComponent(
+            keyword
+          )}`;
+        } else {
+          alert('Keyword not found');
+        }
+      }
+    </script>
+  </body>
+</html>

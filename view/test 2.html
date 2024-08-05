@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VARK Questionnaire</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #0056b3;
+      }
+      .container {
+        width: 50%;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow-y: scroll;
+        height: 90%;
+      }
+      .question {
+        margin-bottom: 20px;
+      }
+      .question p {
+        font-weight: bold;
+      }
+      .answers label {
+        display: block;
+        margin: 5px 0;
+      }
+      .submit-button {
+        display: inline-block;
+        background-color: #1a73e8;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 20px;
+      }
+      .submit-button:hover {
+        background-color: #155bb5;
+      }
+      .results {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+
+      .results-card {
+        background-color: #4caf50; /* 녹색 배경 */
+        color: white;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .results-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .submit-button {
+        background-color: #1a73e8;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .submit-button:hover {
+        background-color: #155ab8;
+      }
+    </style>
+  </head>
+  <body>
+    <h1
+      style="
+        text-align: center;
+        font-family: Arial, sans-serif;
+        color: white;
+        margin-bottom: 20px;
+      "
+    >
+      V.A.R.K 학습 유형 검사
+    </h1>
+    <div class="container">
+      <form id="vark-form">
+        <!-- 첫 번째 질문 -->
+        <div class="question">
+          <p>
+            1. 당신은 지금 공항, 도심 혹은 기차역에 가고자하는 한 사람을 돕고
+            있다. 그렇다면 당신은:
+          </p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q1" value="K" /> a. 그 사람과 함께 갈
+              것이다.</label
+            >
+            <label
+              ><input type="radio" name="q1" value="A" /> b. 가는 방향을 그
+              사람에게 말해줄 것이다.</label
+            >
+            <label
+              ><input type="radio" name="q1" value="R" /> c. 가는 방향을 써줄
+              것이다. (지도 없이).</label
+            >
+            <label
+              ><input type="radio" name="q1" value="V" /> d. 지도를 그에게 줄
+              것이다.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 두 번째 질문 -->
+        <div class="question">
+          <p>
+            2. 당신이 쓰고자 하는 단어의 정서법이 “괜찮은” 인지 “괜찬은”인지
+            불확실하다면 당신은:
+          </p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q2" value="K" /> a. 당신의 머릿속에 두
+              단어를 그려보고 그럴듯한 것을 선택할 것이다.</label
+            >
+            <label
+              ><input type="radio" name="q2" value="V" /> b. 각각의 단어가
+              어떻게 들리는지에 대해 생각해보고 하나를 선택할 것이다.</label
+            >
+            <label
+              ><input type="radio" name="q2" value="R" /> c. 사전에서 두 단어를
+              찾아볼 것이다.</label
+            >
+            <label
+              ><input type="radio" name="q2" value="A" /> d. 각각의 단어를
+              써보고 하나를 선택할 것이다.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 세 번째 질문 -->
+        <div class="question">
+          <p>
+            3. 당신은 한 집단을 위한 휴가를 계획하고 있다. 당신이 만약 그 집단
+            사람들로부터 그 계획에 대한 피드백을 원한다면 당신은:
+          </p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q3" value="K" /> a. 그 여행의
+              특이할만한 점에 대해 묘사할 것이다.</label
+            >
+            <label
+              ><input type="radio" name="q3" value="V" /> b. 여행 장소를
+              보여주기 위해 지도나 웹사이트를 이용할 것이다.</label
+            >
+            <label
+              ><input type="radio" name="q3" value="R" /> c. 일정표 사본을
+              그들에게 줄 것이다.</label
+            >
+            <label
+              ><input type="radio" name="q3" value="A" /> d. 그들에게 전화하거나
+              편지를 쓰거나 이메일을 보낼 것이다.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 네 번째 질문 -->
+        <div class="question">
+          <p>
+            4. 당신은 가족을 위한 특별한 접대로 뭔가를 요리하려고 한다. 그렇다면
+            당신은
+          </p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q4" value="A" /> a. 요리책 필요 없이
+              당신이 아는 뭔가를 요리할 것이다.</label
+            >
+            <label
+              ><input type="radio" name="q4" value="V" /> b. 당신의 친구들에게
+              추천해달라고 요구할 것이다.</label
+            >
+            <label
+              ><input type="radio" name="q4" value="K" /> c. 사진에서 아이디어를
+              얻기 위해 요리책을 넘겨본다.</label
+            >
+            <label
+              ><input type="radio" name="q4" value="R" /> d. 훌륭한 조리법이
+              있는, 당신이 알고 있는 요리책을 이용할 것이다.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 다섯 번째 질문 -->
+        <div class="question">
+          <p>
+            5. 한 여행자 그룹이 당신의 지역에 있는 공원이나 야생생물 보존지구에
+            대해 배우길 원한다면 당신은:
+          </p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q5" value="A" /> a. 공원이나 야생생물
+              보존지구에 대해 말로 이야기해줄 것이다.</label
+            >
+            <label
+              ><input type="radio" name="q5" value="V" /> b. 인터넷이나 사진
+              혹은 이미지가 있는 책을 보여줄 것이다.</label
+            >
+            <label
+              ><input type="radio" name="q5" value="K" /> c. 공원이나 야생생물
+              보존지구로 그들을 데려가 그 지역을 돌아볼 수 있게 한다.</label
+            >
+            <label
+              ><input type="radio" name="q5" value="R" /> d. 공원이나 야생생물
+              보존지구에 대한 책이나 팜플렛을 그들에게 준다.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 여섯 번째 질문 -->
+        <div class="question">
+          <p>
+            6. 당신이 디지털 카메라나 휴대폰을 살 시점에 있다고 할 때, 가격 외에
+            당신의 결정에 영향을 미치는 것은 무엇인가?
+          </p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q6" value="K" /> a. 그것을 이용해보거나
+              테스트해보는 것.</label
+            >
+            <label
+              ><input type="radio" name="q6" value="R" /> b. 그 기구의 특성에
+              대해 상세히 읽는 것.</label
+            >
+            <label
+              ><input type="radio" name="q6" value="V" /> c. 디자인이 현대적이고
+              좋아 보이는 것.</label
+            >
+            <label
+              ><input type="radio" name="q6" value="A" /> d. 그 기구의 특성에
+              관한 판매자의 설명.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 일곱 번째 질문 -->
+        <div class="question">
+          <p>
+            7. 당신이 새로운 것을 배웠을 때 어떻게 그 것을 하였는지를
+            기억하시오. 자전거타기와 같은 신체적 기술의 선택은 배제하시오.
+            당신은 어떻게 더 잘 배울 수 있었는가?
+          </p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q7" value="K" /> a. 시범을
+              보고서.</label
+            >
+            <label
+              ><input type="radio" name="q7" value="A" /> b. 누군가의 설명을
+              듣고 질문을 하면서.</label
+            >
+            <label
+              ><input type="radio" name="q7" value="V" /> c. 도해나 차트와 같은
+              시각적 안내서를 보면서.</label
+            >
+            <label
+              ><input type="radio" name="q7" value="R" /> d. 매뉴얼이나 교재와
+              같은 문자로 쓰인 지시문을 보면서.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 여덟 번째 질문 -->
+        <div class="question">
+          <p>
+            8. 당신의 무릎에 문제가 있다면 당신은 의사가 어떻게 하기를 바라는가?
+          </p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q8" value="R" /> a. 웹 주소나 그 문제에
+              대한 읽을거리를 당신에게 주기를 바란다.</label
+            >
+            <label
+              ><input type="radio" name="q8" value="K" /> b. 무릎이 아픈 원인을
+              명확히 알기 위해 무릎의 구조도를 보여주기를 바란다.</label
+            >
+            <label
+              ><input type="radio" name="q8" value="A" /> c. 그 문제가 왜
+              발생했는지에 대해 설명을 듣기를 바란다.</label
+            >
+            <label
+              ><input type="radio" name="q8" value="V" /> d. 무릎을 검사 받기를
+              원한다.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 아홉 번째 질문 -->
+        <div class="question">
+          <p>9. 당신이 새롭고 복잡한 프로그램을 구매했다. 그렇다면 당신은:</p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q9" value="R" /> a. 그 프로그램에 대한
+              사용 설명서를 읽을 것이다.</label
+            >
+            <label
+              ><input type="radio" name="q9" value="A" /> b. 그 프로그램에 대해
+              말하는 사람들의 이야기를 들을 것이다.</label
+            >
+            <label
+              ><input type="radio" name="q9" value="K" /> c. 시범을 보고 싶어할
+              것이다.</label
+            >
+            <label
+              ><input type="radio" name="q9" value="V" /> d. 프로그램의 시각적
+              안내서를 이용할 것이다.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 열 번째 질문 -->
+        <div class="question">
+          <p>
+            10. 당신은 학술지를 통해 무언가를 배울 수 있는 기회가 주어졌다.
+            당신은 어떤 방법을 선호하는가?
+          </p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q10" value="K" /> a. 학술지를 읽고
+              요점을 필기한다.</label
+            >
+            <label
+              ><input type="radio" name="q10" value="V" /> b. 차트와 도해를 통해
+              배우고 이해한다.</label
+            >
+            <label
+              ><input type="radio" name="q10" value="R" /> c. 학술지에 대해 쓴
+              글을 읽는다.</label
+            >
+            <label
+              ><input type="radio" name="q10" value="A" /> d. 학술지를 통해
+              배우는 방법을 듣고 설명을 듣는다.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 열한 번째 질문 -->
+        <div class="question">
+          <p>
+            11. 만약 당신이 새 핸드폰을 산다면, 당신은 다음 중 어떤 것을 먼저 할
+            것인가?
+          </p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q11" value="V" /> a. 핸드폰의 화면을
+              보고 그것의 기능을 확인한다.</label
+            >
+            <label
+              ><input type="radio" name="q11" value="R" /> b. 핸드폰의 매뉴얼을
+              읽어본다.</label
+            >
+            <label
+              ><input type="radio" name="q11" value="A" /> c. 친구들이나
+              판매원의 설명을 듣는다.</label
+            >
+            <label
+              ><input type="radio" name="q11" value="K" /> d. 핸드폰의 기능을
+              테스트해본다.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 열두 번째 질문 -->
+        <div class="question">
+          <p>12. 당신은 무언가를 새로 배우게 되었다. 어떤 방법이 더 나은가?</p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q12" value="A" /> a. 누군가의 설명을
+              듣고 질문을 하는 방법.</label
+            >
+            <label
+              ><input type="radio" name="q12" value="R" /> b. 매뉴얼이나 교재와
+              같은 문자로 쓰인 지시문을 읽는 방법.</label
+            >
+            <label
+              ><input type="radio" name="q12" value="V" /> c. 도해나 차트와 같은
+              시각적 안내서를 보는 방법.</label
+            >
+            <label
+              ><input type="radio" name="q12" value="K" /> d. 시범을 보고
+              따라하는 방법.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 열세 번째 질문 -->
+        <div class="question">
+          <p>13. 당신이 친구와의 약속을 잡을 때, 어떻게 할 것인가?</p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q13" value="K" /> a. 만나서
+              이야기한다.</label
+            >
+            <label
+              ><input type="radio" name="q13" value="R" /> b. 문자로 약속을
+              잡는다.</label
+            >
+            <label
+              ><input type="radio" name="q13" value="V" /> c. 장소를 지도에서
+              찾아본다.</label
+            >
+            <label
+              ><input type="radio" name="q13" value="A" /> d. 전화로 약속을
+              잡는다.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 열네 번째 질문 -->
+        <div class="question">
+          <p>
+            14. 당신이 취미나 여가활동을 시작하려고 한다. 당신은 어떻게 할
+            것인가?
+          </p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q14" value="K" /> a. 친구들과 함께 그
+              활동을 시작한다.</label
+            >
+            <label
+              ><input type="radio" name="q14" value="R" /> b. 그 활동에 대한
+              책이나 블로그를 읽는다.</label
+            >
+            <label
+              ><input type="radio" name="q14" value="A" /> c. 그 활동에 대한
+              설명을 듣는다.</label
+            >
+            <label
+              ><input type="radio" name="q14" value="V" /> d. 그 활동에 대한
+              비디오를 본다.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 열다섯 번째 질문 -->
+        <div class="question">
+          <p>15. 새로운 장소로 여행을 갔을 때, 당신은 어떻게 할 것인가?</p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q15" value="K" /> a. 그 장소를 직접
+              돌아다니며 체험한다.</label
+            >
+            <label
+              ><input type="radio" name="q15" value="R" /> b. 그 장소에 대한
+              글을 읽는다.</label
+            >
+            <label
+              ><input type="radio" name="q15" value="A" /> c. 그 장소에 대한
+              설명을 듣는다.</label
+            >
+            <label
+              ><input type="radio" name="q15" value="V" /> d. 그 장소의 사진이나
+              지도를 본다.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 열여섯 번째 질문 -->
+        <div class="question">
+          <p>16. 새로운 언어를 배울 때, 당신은 어떤 방법을 선호하는가?</p>
+          <div class="answers">
+            <label
+              ><input type="radio" name="q16" value="V" /> a. 그 언어의 문법을
+              배우고 문장을 작성한다.</label
+            >
+            <label
+              ><input type="radio" name="q16" value="A" /> b. 그 언어로 대화를
+              나누고 말하기를 연습한다.</label
+            >
+            <label
+              ><input type="radio" name="q16" value="R" /> c. 그 언어의 책이나
+              문서를 읽는다.</label
+            >
+            <label
+              ><input type="radio" name="q16" value="K" /> d. 그 언어를 사용하는
+              사람들과 실제 상황에서 연습한다.</label
+            >
+          </div>
+          <hr />
+        </div>
+        <!-- 제출 버튼 -->
+        <div style="text-align: center">
+          <button
+            type="button"
+            class="submit-button"
+            onclick="calculateResults()"
+          >
+            제출하기
+          </button>
+        </div>
+      </form>
+      <div id="results" class="results"></div>
+      <div style="text-align: center">
+        <button
+          id="next-page-button"
+          style="display: none"
+          class="submit-button"
+          onclick="goToNextPage()"
+        >
+          키워드 입력하기
+        </button>
+      </div>
+    </div>
+    <script src="test.js"></script>
+  </body>
+</html>

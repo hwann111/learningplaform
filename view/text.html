@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Page</title>
+    <link rel="stylesheet" href="css/text.css" />
+  </head>
+  <body>
+    <div class="button-container">
+      <button class="level-button" onclick="showDescription('elementary')">
+        초등단계
+      </button>
+      <button class="level-button" onclick="showDescription('middle')">
+        중등단계
+      </button>
+      <button class="level-button" onclick="showDescription('high')">
+        고등단계
+      </button>
+    </div>
+    <div class="description-box" id="descriptionBox"></div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const keyword = urlParams.get('keyword');
+
+        if (keyword) {
+          fetchDescriptions(keyword);
+        } else {
+          alert('Keyword not found');
+        }
+      });
+
+      async function fetchDescriptions(keyword) {
+        const response = await fetch(
+          `https://api.chatgpt.com/describe?keyword=${encodeURIComponent(
+            keyword
+          )}`
+        );
+        const data = await response.json();
+
+        localStorage.setItem('descriptions', JSON.stringify(data));
+      }
+
+      function showDescription(level) {
+        const descriptions = JSON.parse(localStorage.getItem('descriptions'));
+        const descriptionBox = document.getElementById('descriptionBox');
+
+        descriptionBox.textContent = descriptions[level];
+        descriptionBox.style.display = 'block';
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Start Page</title>
+    <link rel="stylesheet" href="css/start.css" />
+  </head>
+  <body>
+    <div class="container">
+      <input
+        type="text"
+        class="search-input"
+        id="keyword"
+        placeholder="Enter keyword..."
+      />
+      <button class="search-button" onclick="submitKeyword()">Search</button>
+    </div>
+    <script>
+      function submitKeyword() {
+        const keyword = document.getElementById('keyword').value;
+        if (keyword) {
+          localStorage.setItem('keyword', keyword);
+          window.location.href = 'service.html';
+        } else {
+          alert('Please enter a keyword');
+        }
+      }
+    </script>
+  </body>
+</html>
