@@ -22,7 +22,9 @@
 ![chatbot](https://github.com/user-attachments/assets/e4838d1f-281b-4f96-a367-76689b5d23da)
 >사용자에 맞게 스타일을 지정 대화를 시도한다. 초중고의 난이도로 나누어져 있다.
 <br/>
+
 ---
+
 ### 4. 질문 생성
 <br/>
 
@@ -40,6 +42,7 @@
 ![video](https://github.com/user-attachments/assets/a7dabed3-2a01-4b24-bf3a-56b5f3d5f6d1)
 
 <br/>
+
 ---
 ## Server
 서버는 FastAPI와 Node.js를 사용했습니다.
